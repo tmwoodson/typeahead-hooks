@@ -1,13 +1,13 @@
 import * as React from 'react'
 import { useState } from 'react'
 import { useAsync } from 'react-async-hook'
+import useConstant from 'use-constant'
 
-import { fetchOptions } from './api.js'
+import { fetchOptionsDebounced } from 'api'
 
 const TypeaheadOption = ({option}) => {
     return <div className="typeahead-option">{option}</div>
 }
-
 
 const typeaheadOptions = ({options}) =>
     <div>
@@ -18,12 +18,11 @@ const Typeahead = () => {
 
     const [inputVal, setInputVal] = useState('')
 
-    const asyncOptions = useAsync(fetchOptions, [inputVal])
+    const searchDebounced = useConstant(fetchOptionsDebounced)
 
-    const onInputChange = async ({target: {value}}) => {
-        setInputVal(value)
-    }
+    const asyncOptions = useAsync(searchDebounced, [inputVal])
 
+    const onInputChange = async ({target: {value}}) => setInputVal(value)
 
     return (
         <div className="wrapper">

@@ -1,3 +1,5 @@
+import AwesomeDebouncePromise from "awesome-debounce-promise/dist/index";
+
 const SERVER_RESPONSE = [
     'kittens',
     'puppies',
@@ -23,6 +25,8 @@ const SERVER_RESPONSE = [
 
 const MAX_RESPONSES = 5
 
+const DEBOUNCE_MS = 500
+
 const filterData = async (searchString) => {
     if (!searchString || searchString === '') return []
     const matches = SERVER_RESPONSE.filter(option => option.includes(searchString))
@@ -33,4 +37,6 @@ const filterData = async (searchString) => {
 }
 
 export const fetchOptions = async (searchString) => await filterData(searchString)
+
+export const fetchOptionsDebounced = () => AwesomeDebouncePromise(fetchOptions, DEBOUNCE_MS)
 
