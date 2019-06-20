@@ -1,0 +1,21 @@
+{
+  "name": "typeahead",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "api": "^1.0.0",
+    "awesome-debounce-promise": "^2.1.0",
+    "parcel": "^1.12.3",
+    "react": "^16.8.6",
+    "react-async-hook": "^3.2.2",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "sass": "^1.20.3"
+  },
+  "scripts": {
+    "start": "node_modules/parcel/bin/cli.js index.html"
+  }
+}
